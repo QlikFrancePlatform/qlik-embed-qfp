@@ -24,7 +24,6 @@ export default class AdvisorService {
      */
 
     async fetchRecommendationAndRenderChart(requestPayload) {
-        console.log(requestPayload);
         // fetch recommendations for text or metadata
         const recommendations = await this.getRecommendation(requestPayload);
         console.log('recommendations received');
@@ -135,8 +134,6 @@ export default class AdvisorService {
           headers,
           body: data,
         });
-
-        console.log(response);
 
         const recommendationResponse = await response.json();
         return recommendationResponse;

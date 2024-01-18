@@ -16,7 +16,7 @@
     ],
     "browserslist": "> 0.5%, last 2 versions, not dead",
     "scripts": {
-        "dev": "parcel src/index.html --no-hmrs",
+        "dev": "parcel src/index.html --no-hmr",
         "server": "parcel serve src/index.html --public-url / --dist-dir dist",
         "prebuild": "npx rimraf build",
         "live": "npx live-server dist",

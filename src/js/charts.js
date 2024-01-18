@@ -28,6 +28,8 @@ import sankeychart from '@nebula.js/sn-sankey-chart';
 import orgchart from '@nebula.js/sn-org-chart';
 import networkchart from '@nebula.js/sn-network-chart';
 
+let charts;
+
 export default charts = {
   embed,
   barchart,
