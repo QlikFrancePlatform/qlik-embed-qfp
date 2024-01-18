@@ -1,0 +1,241 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+// Then add additional custom code here
+
+// Custom.scss
+// Option B: Include parts of Bootstrap
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+// 4. Include any optional Bootstrap components as you like
+@import "../../node_modules/bootstrap/scss/root";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/containers";
+@import "../../node_modules/bootstrap/scss/grid";
+
+html {
+  font-family: Inter,sans-serif;
+}
+
+.bg-grey {
+  background-color: rgb(84 86 90);
+}
+
+a,
+.green {
+  color: #289c4c;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.b-example-divider {
+  width: 100%;
+  height: 3rem;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.b-example-vr {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
+}
+
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.btn-primary {
+  --bd-violet-bg: #289c4c;
+  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #289c4c;
+  --bs-btn-hover-border-color: #289c4c;
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #289c4c;
+  --bs-btn-active-border-color: #289c4c;
+}
+
+.btn-bd-primary {
+  --bd-violet-bg: #289c4c;
+  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #289c4c;
+  --bs-btn-hover-border-color: #289c4c;
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #289c4c;
+  --bs-btn-active-border-color: #289c4c;
+}
+
+.bd-mode-toggle {
+  z-index: 1500;
+}
+
+.bd-mode-toggle .dropdown-menu .active .bi {
+  display: block !important;
+}
+
+.navbar-brand strong,
+.brand-qlik {
+  color: #289c4c;
+  margin-left: .5em
+}
+
+.navbar-toggler {
+  background-color: #289c4c;
+}
+
+.col .card {
+  height: 550px;
+}
+
+.viz {
+  width: 100%;
+  height: 325px;
+}
+
+.object {
+  height: 100%;
+}
+
+.chart-advisor {
+  height: 500px;
+}
+
+.bulgy-radios {
+  position: relative;
+
+  label {
+    display: block;
+    position: relative;
+    height: 1em;
+    padding-left: 4rem;
+    margin-bottom: 1.75rem;
+    cursor: pointer;
+    user-select: none;
+    color: rgb(84 86 90);
+    letter-spacing: 1px;
+    &:hover input:not(:checked) ~ .radio {
+      opacity: 0.8;
+    }
+  }
+  .form-check-label {
+    align-items: center;
+    height: 2px;
+    span {
+      line-height: 1em;
+    }
+  }
+  input {
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    left: -2000px;
+
+    &:checked {
+      ~ .radio {
+        background-color: #289c4c;
+        transition: background .3s;
+        &::after {
+          opacity: 1;
+        }
+      }
+      ~ .form-check-label {
+        color: #289c4c;
+        span {
+          animation: bulge .5s forwards;
+        }
+
+        //adjust this if label is going to be more than 20 chars
+        @for $i from 1 to 20 {
+          span:nth-child(#{$i}) { animation-delay: $i * 0.025s; }
+        }
+      }
+    }
+  }
+}
+.radio {
+  position: absolute;
+  top: 0;
+  left: 55px;
+  height: 1.5rem;
+  width: 1.5rem;
+  background: #c9ded6;
+  border-radius: 50%;
+  &::after {
+    content: '';
+    position: absolute;
+    opacity: 0;
+    top: 0.25rem;
+    left: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: #fff;
+  }
+}
+@keyframes bulge {
+  50% {
+    transform: rotate(4deg);
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  100% {
+    transform: rotate(0);
+    font-size: 1em;
+    font-weight: bold;
+  }
+}
