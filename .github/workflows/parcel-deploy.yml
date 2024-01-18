@@ -1,0 +1,44 @@
+name: Build and Deploy
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        # choose node.js version to use
+        node-version: '18'
+
+    # cache node_modules
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      id: yarn-cache
+      with:
+        path: |
+          **/node_modules
+        key: ${{ runner.os }}
+        restore-keys: |
+          ${{ runner.os }}
+
+    # Create env file for Telegram bot about hatid and botkey
+    - name: 'Create env file'
+      run: |
+        touch .env
+        echo PROJECT_NAME="Qlik Embed" >> .env
+        echo TENANT_URL="${{ secrets.TENANT_URL }}"  >> .env
+        echo APP_ID="${{ secrets.APP_ID }}"  >> .env
+        echo WEB_INTEGRATION_ID="${{ secrets.WEB_INTEGRATION_ID }}"  >> .env
+        cat .env
+
+    # install dependencies if the cache did not hit
+    - name: Install dependencies
+      run: npm install
+
+    # run build script
+    - name: Build Embed Qlik site
+      run: npm build
+      working-directory: ./dist
