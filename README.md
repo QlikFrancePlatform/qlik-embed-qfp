@@ -1,4 +1,4 @@
-# ![Qlik logo](src/img/Qlik_logo.svg) Embed
+# ![Qlik logo](./src/img/Qlik_logo.svg) Embed
 
 This is the website for Qlik Sense Embed Objects. Check limitation to object with Qlik Embed html web tag, Nebular.js and Insight Advisor API.
 
