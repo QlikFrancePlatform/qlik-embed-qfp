@@ -12,18 +12,20 @@ let fieldDimensionsRef = document.getElementById('fieldDimensions');
 let masterDimensionsRef = document.getElementById('masterDimensions');
 let analyses = document.getElementById('selectAnalysis');
 
+const alert = document.getElementById('alertAdvisor');
+const showCharts = document.getElementById('chart-advisor');
+
 window.addEventListener('load', (e) => {
   e.preventDefault();
 
   fetchMedata();
-  disableMetadataSelections();
+  alert.style.display = 'none';
+  showCharts.style.display = 'none';
 })
 
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
 
-  const alert = document.getElementById('alertAdvisor');
-  const showCharts = document.getElementById('chart-advisor');
   const inputSearch = document.getElementById('inputSearch').value;
   const targetAnalysis = document.getElementById('selectAnalysis').value;
   const dimension = document.getElementById('selectDimension').value;
@@ -40,7 +42,7 @@ submitBtn.addEventListener('click', (e) => {
   document.querySelector('#chart-advisor').innerHTML = '';
 
   const requestPayload = { fields: [], libItems: [] };
-x
+
   if (requestPayload.fields.length == 0 ||  inputSearch != "") {
     document.getElementById('formAdvisor').reset();
 
@@ -73,8 +75,7 @@ x
   advisorService.fetchRecommendationAndRenderChart(requestPayload);
 
   // Display Charts layout after result
-  showCharts.classList.add("show");
-  showCharts.classList.add("vh-100");
+  showCharts.style.display = 'block';
 
   document.getElementById('inputSearch').value = "";
   requestPayload.value = "";

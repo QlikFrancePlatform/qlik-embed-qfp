@@ -2,6 +2,10 @@
 
 This is the website for Qlik Sense Embed Objects. Check limitation to object with Qlik Embed html web tag, Nebular.js and Insight Advisor API.
 
+## Getting Started
+
+Before we get started, you'll need to install Node and npm (or Yarn).
+
 ## Contributing
 
 Add .env file with parameter

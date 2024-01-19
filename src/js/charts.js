@@ -28,9 +28,7 @@ import sankeychart from '@nebula.js/sn-sankey-chart';
 import orgchart from '@nebula.js/sn-org-chart';
 import networkchart from '@nebula.js/sn-network-chart';
 
-let charts;
-
-export default charts = {
+let charts = {
   embed,
   barchart,
   actionbutton,
@@ -60,3 +58,5 @@ export default charts = {
   orgchart,
   networkchart
 }
+
+export default charts;

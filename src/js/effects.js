@@ -5,6 +5,7 @@ function disableMetadataSelections() {
   document.getElementById("selectAnalysis").style.display = 'none';
   document.getElementById("inputSearch").style.display = 'block';
 }
+
 function disableQuestionBox() {
   document.getElementById("inputSearch").value
   document.getElementById("inputSearch").style.display = 'none';
@@ -21,4 +22,10 @@ labels.forEach(label => {
   chars.forEach(char => {
     label.innerHTML += `<span>${char === ' ' ? '&nbsp' : char}</span>`;
   });
+})
+
+window.addEventListener('load', (e) => {
+  e.preventDefault();
+
+  disableMetadataSelections();
 })

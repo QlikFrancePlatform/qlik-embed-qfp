@@ -45,6 +45,7 @@ export default class AdvisorService {
 
     async renderHypercubeDef(app, recommendation) {
         const type = recommendation.chartType;
+        console.log(type)
 
         const nebbie = charts.embed(app, {
         types: [
@@ -126,7 +127,7 @@ export default class AdvisorService {
             targetAnalysis: { id: requestPayload.id },
           });
         }
-        console.log(data)
+
         const response = await fetch(endpointUrl, {
           credentials: "include",
           mode: "cors",

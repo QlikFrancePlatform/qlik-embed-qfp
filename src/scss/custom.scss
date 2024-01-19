@@ -31,7 +31,7 @@ html {
 
 a,
 .green {
-  color: #289c4c;
+  color: #009845;
 }
 
 .bd-placeholder-img {
@@ -87,7 +87,7 @@ a,
 }
 
 .btn-primary {
-  --bd-violet-bg: #289c4c;
+  --bd-violet-bg: #009845;
   --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
 
   --bs-btn-font-weight: 600;
@@ -95,16 +95,16 @@ a,
   --bs-btn-bg: var(--bd-violet-bg);
   --bs-btn-border-color: var(--bd-violet-bg);
   --bs-btn-hover-color: var(--bs-white);
-  --bs-btn-hover-bg: #289c4c;
-  --bs-btn-hover-border-color: #289c4c;
+  --bs-btn-hover-bg: #009845;
+  --bs-btn-hover-border-color: #009845;
   --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
   --bs-btn-active-color: var(--bs-btn-hover-color);
-  --bs-btn-active-bg: #289c4c;
-  --bs-btn-active-border-color: #289c4c;
+  --bs-btn-active-bg: #009845;
+  --bs-btn-active-border-color: #009845;
 }
 
 .btn-bd-primary {
-  --bd-violet-bg: #289c4c;
+  --bd-violet-bg: #009845;
   --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
 
   --bs-btn-font-weight: 600;
@@ -112,12 +112,12 @@ a,
   --bs-btn-bg: var(--bd-violet-bg);
   --bs-btn-border-color: var(--bd-violet-bg);
   --bs-btn-hover-color: var(--bs-white);
-  --bs-btn-hover-bg: #289c4c;
-  --bs-btn-hover-border-color: #289c4c;
+  --bs-btn-hover-bg: #009845;
+  --bs-btn-hover-border-color: #009845;
   --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
   --bs-btn-active-color: var(--bs-btn-hover-color);
-  --bs-btn-active-bg: #289c4c;
-  --bs-btn-active-border-color: #289c4c;
+  --bs-btn-active-bg: #009845;
+  --bs-btn-active-border-color: #009845;
 }
 
 .bd-mode-toggle {
@@ -130,12 +130,12 @@ a,
 
 .navbar-brand strong,
 .brand-qlik {
-  color: #289c4c;
+  color: #009845;
   margin-left: .5em
 }
 
 .navbar-toggler {
-  background-color: #289c4c;
+  background-color: #009845;
 }
 
 .col .card {
@@ -187,14 +187,14 @@ a,
 
     &:checked {
       ~ .radio {
-        background-color: #289c4c;
+        background-color: #009845;
         transition: background .3s;
         &::after {
           opacity: 1;
         }
       }
       ~ .form-check-label {
-        color: #289c4c;
+        color: #009845;
         span {
           animation: bulge .5s forwards;
         }
@@ -209,8 +209,8 @@ a,
 }
 .radio {
   position: absolute;
-  top: 0;
-  left: 55px;
+  top: -3px;
+  left: 47px;
   height: 1.5rem;
   width: 1.5rem;
   background: #c9ded6;
