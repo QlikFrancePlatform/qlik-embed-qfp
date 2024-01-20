@@ -41,4 +41,4 @@ jobs:
     # run build script
     - name: Build Embed Qlik site
       run: npm run build
-      working-directory: ./dist
+      working-directory: ./build
