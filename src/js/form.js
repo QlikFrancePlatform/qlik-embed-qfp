@@ -12,73 +12,116 @@ let fieldDimensionsRef = document.getElementById('fieldDimensions');
 let masterDimensionsRef = document.getElementById('masterDimensions');
 let analyses = document.getElementById('selectAnalysis');
 
-const alert = document.getElementById('alertAdvisor');
-const showCharts = document.getElementById('chart-advisor');
+let alert = document.getElementById('alertAdvisor');
+let showCharts = document.getElementById('chart-advisor');
+
+let inputSearch = document.getElementById('inputSearch');
+let dimension = document.getElementById('selectDimension');
+
+let requestPayload = { fields: [], libItems: [] };
+
+/* Validate form */
+
+let validInputSearch = false;
+let validDimension = false;
+
+inputSearch.addEventListener("blur", () => {
+
+  let inputSearchStr = inputSearch.value;
+  if (inputSearchStr) {
+
+    requestPayload.text = inputSearchStr;
+    validInputSearch = true;
+
+  } else {
+
+    alert.classList.add("show");
+    validInputSearch= false;
+
+  }
+});
+
+dimension.addEventListener("blur", () => {
+
+  let targetAnalysis = document.getElementById('selectAnalysis').value;
+  let measure = document.getElementById('selectMeasure').value;
+  let dimensionType = document.querySelector('#selectDimension option:checked').parentElement.label;
+  let measureType = document.querySelector('#selectMeasure option:checked').parentElement.label;
+
+  let dimensionStr = dimension.value;
+  if (dimensionStr) {
+
+    if (dimensionType == 'Fields') {
+      requestPayload.fields.push({ name: dimensionStr });
+    } else {
+      requestPayload.libItems.push({ libId: dimensionStr });
+    }
+
+    if (measureType == 'Fields') {
+      requestPayload.fields.push({ name: measure });
+    } else {
+      requestPayload.libItems.push({ libId: measure });
+    }
+
+    if (targetAnalysis) {
+      requestPayload.id = targetAnalysis || 'rank-rank';
+    }
+
+    validDimension = true;
+
+  } else {
+
+    alert.classList.add("show");
+    validDimension = false;
+
+  }
+});
+
+/* Load script */
 
 window.addEventListener('load', (e) => {
   e.preventDefault();
 
   fetchMedata();
+
+  // Delete Charts layout & Alert after result
   alert.style.display = 'none';
   showCharts.style.display = 'none';
 })
 
+/* Submit Form */
+
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
 
-  const inputSearch = document.getElementById('inputSearch').value;
-  const targetAnalysis = document.getElementById('selectAnalysis').value;
-  const dimension = document.getElementById('selectDimension').value;
-  const dimensionType = document.querySelector('#selectDimension option:checked').parentElement.label;
-  const measure = document.getElementById('selectMeasure').value;
-  const measureType = document.querySelector('#selectMeasure option:checked').parentElement.label;
+  // Delete Objet & Charts layout & Alert after result
+  showCharts.innerHTML = "";
+  alert.style.display = 'none';
+  showCharts.style.display = 'none';
 
-  // Delete Charts layout & Alert after result
-  showCharts.classList.remove("show");
-  showCharts.classList.add("hide");
-  alert.classList.remove("show");
-  alert.classList.add("hide");
-  document.querySelector('#alertAdvisor').innerHTML = '';
-  document.querySelector('#chart-advisor').innerHTML = '';
+  if (validInputSearch || validDimension) {
+    console.log(requestPayload)
+    advisorService.fetchRecommendationAndRenderChart(requestPayload);
 
-  const requestPayload = { fields: [], libItems: [] };
+    document.getElementById('inputSearch').value = "";
+    // requestPayload.text = "";
+    requestPayload = { fields: [], libItems: [] };
 
-  if (requestPayload.fields.length == 0 ||  inputSearch != "") {
-    document.getElementById('formAdvisor').reset();
+    showCharts.style.display = 'block';
+    alert.style.display = "none";
 
-    alert.classList.add("show");
-
-    showCharts.classList.remove("show");
-    showCharts.classList.add("hide");
-  }
-
-  if (dimensionType == 'Fields') {
-    requestPayload.fields.push({ name: dimension });
   } else {
-    requestPayload.libItems.push({ libId: dimension });
+
+    console.log('error')
+    // Delete Objet & Charts layout & Alert after result
+    document.getElementById('inputSearch').value = "";
+    requestPayload = { fields: [], libItems: [] };
+    showCharts.innerHTML = ""
+    alert.style.display = "block";
+    showCharts.style.display = 'none';
+
   }
 
-  if (measureType == 'Fields') {
-    requestPayload.fields.push({ name: measure });
-  } else {
-    requestPayload.libItems.push({ libId: measure });
-  }
-
-  if (inputSearch != "") {
-    requestPayload.text = inputSearch;
-  }
-
-  if (targetAnalysis) {
-    requestPayload.id = targetAnalysis || 'rank-rank';
-  }
-
-  advisorService.fetchRecommendationAndRenderChart(requestPayload);
-
-  // Display Charts layout after result
-  showCharts.style.display = 'block';
-
-  document.getElementById('inputSearch').value = "";
-  requestPayload.value = "";
 
 });
 
