@@ -6,7 +6,7 @@ This is the website for Qlik Sense Embed Objects. Check limitation to object wit
 
 Before we get started, you'll need to install Node and npm (or Yarn).
 
-## Contributing
+### Contributing
 
 Add .env file with parameter
 
@@ -17,7 +17,19 @@ APP_ID="<app_id>"
 WEB_INTEGRATION_ID="<web_integration_id>"
 ```
 
-## Managing web integrations
+Change in index.html file
+
+```js
+    <script
+      crossorigin="anonymous"
+      src="https://cdn.jsdelivr.net/npm/@qlik/embed-web-components"
+      data-host="https://<tenant>.eu.qlikcloud.com"
+      data-web-integration-id="<web_integration_id>"
+      data-cross-site-cookies="true"
+    ></script>
+```
+
+#### Managing web integrations
 
 You can create web integrations to add origins that are allowlisted to access the tenant. The web integration containing the allowlist is connected to an ID used in for example a mashup that is connecting to your tenant. When a request arrives, Qlik Cloud confirms that the request derives from an allowlisted domain and then approves the request, else not.
 
