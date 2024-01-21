@@ -4,15 +4,16 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Qlik Embed</title>
+    <title>{{ PROJECT_NAME }}</title>
     <meta name="theme-color" content="#712cf9">
     <link rel="icon" href="img/favicon-32x32.png" type="image/png">
 
     <script
       crossorigin="anonymous"
+      type="application/javascript"
       src="https://cdn.jsdelivr.net/npm/@qlik/embed-web-components"
-      data-host="https://<tenant>.eu.qlikcloud.com"
-      data-web-integration-id="<web_integration_id>"
+      data-host="{{ TENANT_URL }}"
+      data-web-integration-id="{{ WEB_INTEGRATION_ID }}"
       data-cross-site-cookies="true"
     ></script>
 
@@ -125,7 +126,7 @@
             <div class="viz">
               <qlik-embed
                 ui="analytics/chart"
-                app-id="10e5b0c9-08e4-4fec-928d-f2bb449a4b6b"
+                app-id="{{ APP_ID }}"
                 object-id="XYxuJLe"
               >
             </div>
