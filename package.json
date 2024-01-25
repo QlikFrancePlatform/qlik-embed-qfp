@@ -18,11 +18,11 @@
     "scripts": {
         "security": "npm audit",
         "dev": "parcel src/index.html",
-        "server": "parcel serve src/index.html --public-url / --dist-dir dist",
+        "server": "parcel serve ./src/index.html --public-url / --dist-dir dist",
         "prebuild": "npx rimraf build",
         "live": "npx live-server dist",
-        "build": "rm -rf dist; parcel build src/index.html --dist-dir ./dist --public-url .",
-        "buildanalyzer": "parcel build src/index.html --dist-dir ./dist --public-url . --reporter @parcel/reporter-bundle-analyzer"
+        "build": "rm -fr dist; parcel build ./src/index.html --dist-dir ./dist --public-url .",
+        "buildanalyzer": "rm -fr dist; parcel build ./src/index.html --dist-dir ./dist --public-url . --reporter @parcel/reporter-bundle-analyzer"
     },
     "author": "QlikTech International AB - Vincent Legeard",
     "license": "ISC",
@@ -84,7 +84,7 @@
         "@nebula.js/sn-word-cloud": "^1.0.6",
         "@nebula.js/stardust": "4.9.0",
         "@qlik/sdk": "^0.25.0",
-        "dotenv": "^16.3.2",
+        "dotenv": "^16.4.1",
         "enigma.js": "^2.12.0"
     }
 }

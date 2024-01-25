@@ -12,11 +12,8 @@ const webIntegrationId = process.env.WEB_INTEGRATION_ID;
 const config = {
     authType: AuthType.WebIntegration,
     host: tenantUrl,
-    //clientId: clientId,
     webIntegrationId: webIntegrationId,
-    autoRedirect: true,
-    //redirectUri: window.location.origin,
-    // scopes: ["user_default"]
+    autoRedirect: true
 };
 
 const auth = new Auth(config);
@@ -74,7 +71,7 @@ async function renderChart(tenantUrl, appId) {
                 name: 'kpi',
                 load: () => Promise.resolve(charts.kpi),
             },{
-                name: 'linechart',
+                name: 'line-chart',
                 load: () => Promise.resolve(charts.linechart),
             },{
                 name: 'map',
@@ -242,19 +239,29 @@ async function renderChart(tenantUrl, appId) {
         element: document.querySelector('.kpi'),
         fields: ['=Count(quantity)'],
         properties: {
+          showTitle: true,
           title: 'Count Quantity',
         }
     });
 
     // renders a line chart
     renderer.render({
-        type: 'linechart',
+        type: 'line-chart',
         element: document.querySelector('.line-chart'),
         fields: ['productname', '=Count(quantity)'],
         properties: {
           title: 'Product Name per Quantity',
+          lineType: "area",
+          dataPoint: {
+            show: true,
+            showLabels: false,
+          },
+          style: {
+            lineThickness: 3,
+            lineCurve: 'monotone',
+          }
         },
-      });
+    });
 
     // renders a map
     renderer.render({
