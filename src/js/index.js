@@ -465,6 +465,7 @@ async function renderChart(tenantUrl, appId) {
         element: document.querySelector('.layout-container'),
         properties: {
             title: 'Layout Container',
+            objects: ['YbdAPsy', 'wNHF']
         },
     });
 
