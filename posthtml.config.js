@@ -14,18 +14,18 @@ module.exports = {
     },
     "posthtml-expressions": {
       locals: {
-				"PROJECT_NAME": () => {
-					return projectName;
-				},
-				"TENANT_URL": () => {
-					return tenantUrl;
-				},
-				"APP_ID": () => {
-					return appId;
-				},
-				"WEB_INTEGRATION_ID": () => {
-					return webIntegrationId;
-				}
+        "PROJECT_NAME": () => {
+          return projectName;
+        },
+        "TENANT_URL": () => {
+          return tenantUrl;
+        },
+        "APP_ID": () => {
+          return appId;
+        },
+        "WEB_INTEGRATION_ID": () => {
+          return webIntegrationId;
+        }
       }
     }
   }
