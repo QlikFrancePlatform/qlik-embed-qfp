@@ -237,45 +237,15 @@
     try {
 
       const filterpaneChart = document.getElementById("filterpaneChart");
-      if (!filterpaneChart) {
-        console.error("L'élément avec l'ID 'filterpaneChart' n'existe pas.");
-        return;
-      }
-
       const filterpaneChartCat = document.getElementById("filterpaneChartCat");
-      if (!filterpaneChartCat) {
-        console.error("L'élément avec l'ID 'filterpaneChartCat' n'existe pas.");
-        return;
-      }
-
       const filterpaneChartCity = document.getElementById("filterpaneChartCity");
-      if (!filterpaneChartCity) {
-        console.error("L'élément avec l'ID 'filterpaneChartCity' n'existe pas.");
-        return;
-      }
-
       let selected = document.getElementById('main-select');
-      if (!selected) {
-        console.error("L'élément avec l'ID 'main-select' n'existe pas.");
-        return;
-      }
-
       let ul = document.getElementById('selection');
-      if (!ul) {
-        console.error("L'élément avec l'ID 'selection' n'existe pas.");
-        return;
-      }
-
       let d = document.getElementById('sheet');
-      if (!d) {
-        console.error("L'élément avec l'ID 'd' n'existe pas.");
-        return;
-      }
-
-      // add the sheet references to a dropdown list
       let dd = document.getElementById('sheetdrop');
-      if (!dd) {
-        console.error("L'élément avec l'ID 'dd' n'existe pas.");
+
+      if (!filterpaneChart || !filterpaneChartCat || !filterpaneChartCity || !selected || !ul || !d || !dd) {
+        console.error("L'élément avec l'ID n'existe pas.");
         return;
       }
 
@@ -285,45 +255,52 @@
       if (typeof refApi.getDoc === 'function') {
 
         // display filter selection if active selection
-        [ filterpaneChart, filterpaneChartCat, filterpaneChartCity ].forEach(function(element) {
-          element.addEventListener("click", async function() {
+        let elements = [filterpaneChart, filterpaneChartCat, filterpaneChartCity];
+        elements.forEach(function(element) {
+          try {
+            console.log(element)
+            element.addEventListener("click", async function() {
 
-            // GetSelection active
-            let curSelectionsObject = await doc.getCurrentSelectionObject();
-            let curSelections = await curSelectionsObject.getLayout();
-            let selections = curSelections.qSelectionObject.qSelections;
+              // GetSelection active
+              let curSelectionsObject = await doc.getCurrentSelectionObject();
+              let curSelections = await curSelectionsObject.getLayout();
+              let selections = await curSelections.qSelectionObject.qSelections;
+              console.log(selections)
 
-            // Display filter slection with css
-            selected.classList.remove('selected');
+              // Display filter slection with css
+              selected.classList.remove('selected');
 
-            // Create list of selected values
-            ul.innerHTML = '';
-            for (let key in selections) {
-              if (selections[key]['qField']) {
-                let qField = selections[key]['qField'];
-                let qSelected = selections[key]['qSelected'];
+              // Create list of selected values
+              ul.innerHTML = '';
+              for (let key in selections) {
+                if (selections[key]['qField']) {
+                  let qField = selections[key]['qField'];
+                  let qSelected = selections[key]['qSelected'];
 
-                let li = document.createElement('li');
-                li.classList.add('nav-item');
-                li.classList.add('bg-grey-light')
-                let content = `${qField} • ${qSelected}`;
-                content = content.replace(/•/g, '<span class="break-after">•</span>');
-                li.innerHTML = content;
-                ul.appendChild(li);
+                  let li = document.createElement('li');
+                  li.classList.add('nav-item');
+                  li.classList.add('bg-grey-light')
+                  let content = `${qField} • ${qSelected}`;
+                  content = content.replace(/•/g, '<span class="break-after">•</span>');
+                  li.innerHTML = content;
+                  ul.appendChild(li);
+                }
               }
-            }
 
-            // Select first text word you wish to modify
-            let elements = document.querySelectorAll('.nav-item');
+              // Select first text word you wish to modify
+              let elements = document.querySelectorAll('.nav-item');
 
-            elements.forEach(element => {
-              let words = element.innerHTML.split(' ');
-              if (words.length > 0) {
-                words[0] = `<span class="first-word">${words[0]}</span>`;
-                element.innerHTML = words.join(' ');
-              }
+              elements.forEach(element => {
+                let words = element.innerHTML.split(' ');
+                if (words.length > 0) {
+                  words[0] = `<span class="first-word">${words[0]}</span>`;
+                  element.innerHTML = words.join(' ');
+                }
+              });
             });
-          })
+          } catch (error) {
+              console.error("Error when managing filters :", error);
+          }
         })
 
         // clear Button
