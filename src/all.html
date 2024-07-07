@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset=utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ PROJECT_NAME }}</title>
@@ -112,7 +112,6 @@
         <p class="lead text-body-secondary">List all chart of Qlik Sense and check a good behavior with <a href="https://qlik.dev/embed/qlik-embed/why-qlik-embed/">qlik-embed</a> html tag.</p>
         <p>
           <a href="nebula.html" class="btn btn-primary my-2">Embed with Nebula.js</a>
-          <a href="embed.html" class="btn btn-primary my-2">Embed with JS</a>
           <a href="advisor.html" class="btn btn-secondary my-2">Qlik Insight Advisor</a>
         </p>
       </div>
@@ -130,6 +129,10 @@
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
+          <div>
+            <select id="sheetdrop" name="SheetList">
+            </select>
+          </div>
           <div class="card shadow-sm">
             <div class="viz">
               <qlik-embed

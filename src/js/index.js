@@ -133,6 +133,9 @@ async function renderChart(tenantUrl, appId) {
       }, {
         name: 'qlik-network-chart',
         load: () => Promise.resolve(charts.networkchart),
+      }, {
+        name: 'shape',
+        load: () => Promise.resolve(charts.shape),
       },
     ]
   });
@@ -505,6 +508,24 @@ async function renderChart(tenantUrl, appId) {
     fields: ['[employees.country]', '[employees.region]', 'city'],
     properties: {
       title: 'Network Chart',
+    },
+  });
+
+  // renders a Shape line
+  renderer.render({
+    type: 'shape',
+    element: document.querySelector('.shape'),
+    properties: {
+      shape: {
+        type: "dash",
+        orientation: "vertical",
+        style: {
+          width: 3,
+          color: {
+            color: "#ff00ff",
+          },
+        }
+      }
     },
   });
 }

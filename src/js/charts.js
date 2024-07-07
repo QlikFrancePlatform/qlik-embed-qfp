@@ -27,6 +27,7 @@ import mekkochart from '@nebula.js/sn-mekko-chart';
 import sankeychart from '@nebula.js/sn-sankey-chart';
 import orgchart from '@nebula.js/sn-org-chart';
 import networkchart from '@nebula.js/sn-network-chart';
+import shape from '@nebula.js/sn-shape';
 
 let charts = {
   embed,
@@ -56,7 +57,8 @@ let charts = {
   mekkochart,
   sankeychart,
   orgchart,
-  networkchart
+  networkchart,
+  shape
 }
 
 export default charts;

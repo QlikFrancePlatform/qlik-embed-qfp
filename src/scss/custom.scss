@@ -25,6 +25,16 @@ html {
   font-family: Inter,sans-serif;
 }
 
+// Remove title H6 of Qlik Object
+.lineChart h6 {
+  display: none;
+  visibility: hidden;
+}
+
+.bg-grey-light {
+  background-color: rgb(231, 234, 238);
+}
+
 .bg-grey {
   background-color: rgb(84 86 90);
 }
@@ -151,12 +161,53 @@ a,
   height: 325px;
 }
 
+.viz-small {
+  width: 100%;
+  height: 65px;
+}
+
+.viz-filter {
+  width: 100%;
+  height: 280px;
+}
+
+.viz-sheet {
+  width: 100%;
+  height: 725px;
+}
+
 .object {
   height: 100%;
 }
 
+.selections li {
+  margin: 12px;
+  padding: 12px;
+  text-decoration: none;
+  width: 25%;
+}
+
+.first-word {
+  font-size: smaller;
+}
+
+.first-word::first-line {
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+.break-after::after {
+  content: '\A';
+  white-space: pre;
+}
+
 .chart-advisor {
   height: 500px;
+}
+
+.selected {
+  display: none;
+  visibility: hidden;
 }
 
 .bulgy-radios {
