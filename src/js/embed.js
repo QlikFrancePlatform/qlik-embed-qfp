@@ -10,6 +10,7 @@
   qlik_embed_script.setAttribute('data-auto-redirect','true');
 
   document.head.appendChild(qlik_embed_script);
+  var qlik_embed = document.createElement('qlik-embed');
   var qlik_embedcontainer_1 = document.getElementById('qlik-embed-home');
   var row = document.createElement('div');
   //row.classList.add('row');
