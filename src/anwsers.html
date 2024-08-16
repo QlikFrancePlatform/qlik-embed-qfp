@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Qlik Embed</title>
+    <title>{{ PROJECT_NAME }}</title>
     <meta name="theme-color" content="#712cf9">
     <link rel="icon" href="img/favicon-32x32.png" type="image/png">
+
+    <script
+      crossorigin="anonymous"
+      type="application/javascript"
+      src="https://cdn.jsdelivr.net/npm/@qlik/embed-web-components"
+      data-host="{{ TENANT_URL }}"
+      data-web-integration-id="{{ WEB_INTEGRATION_ID }}"
+      data-cross-site-cookies="true"
+      data-auto-redirect="true"
+    ></script>
 
     <link rel="stylesheet" type="text/css" href="./scss/custom.scss">
   </head>
@@ -69,7 +79,7 @@
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
           <h4>About</h4>
-          <p class="text-body-secondary">Qlik’s new library for embedding data and analytics user interfaces into your own web applications. This website list a limitation with the web components is equal to the <a href="https://qlik.dev/embed/qlik-embed/qlik-embed-limitations/">Qlik.dev website</a></p>
+          <p class="text-body-secondary">Qlik’s new library for embedding data and analytics user interfaces into your own web applications. This webpage embed the <a href="https://www.qlik.com/us/products/qlik-answers/"></a>Qlik Anwsers assistant</a></p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
           <h4>Contact</h4>
@@ -95,87 +105,30 @@
 
 <main>
 
-  <section class="py-3 text-center container">
-    <div class="row py-lg-3">
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
       <div class="col-lg-10 col-md-12 mx-auto">
-        <h1 class="fw-light">Qlik Insight Advisor example</h1>
-        <p class="lead text-body-secondary">Check limitation to object with Insight Advisor API. Create a page with a form for that.</p>
-        <p class="lead text-body-secondary">Find on <a href="https://qlik.dev">qlik.dev</a> how to create a mashup with the Insight Advisor api <a href="https://qlik.dev/embed/gen-ai/build-insight-advisor-web-app/">Build a web app for the Insight Advisor API</a></a></p>
+        <h1 class="fw-light">Qlik Embed example</h1>
+        <p class="lead text-body-secondary">List all chart of Qlik Sense and check a good behavior with <a href="https://qlik.dev/embed/qlik-embed/why-qlik-embed/">qlik-embed</a> html tag.</p>
         <p>
           <a href="index.html" class="btn btn-primary my-2">Home Page</a>
-          <a href="embed.html" class="btn btn-primary my-2">Embed with JS</a>
           <a href="nebula.html" class="btn btn-primary my-2">Embed with Nebula.js</a>
-          <a href="anwsers.html" class="btn btn-secondary my-2">Qlik Anwsers</a>
+          <a href="embed.html" class="btn btn-primary my-2">Embed with JS</a>
+          <a href="advisor.html" class="btn btn-secondary my-2">Qlik Insight Advisor</a>
         </p>
       </div>
     </div>
   </section>
 
   <div class="bg-body-tertiary">
-    <div class="container h-100 border-bottom border-5">
-      <div class="d-flex flex-column justify-content-center align-items-center mb-5">
+    <div class="container">
 
-        <div id="alertAdvisor" class="alert alert-warning alert-dismissible" role="alert">
-          🚨 Hello, world! There is an error in the form. Can you fill in the text field on the page, thanks!
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+      <div class="row row-cols-12 g-3">
+        <div class="assistant-ai">
+          <qlik-embed ui="ai/assistant" assistant-id="{{ ASSISTANT_ID }}" appearance="qlik-light"></qlik-embed>
         </div>
-
-        <div class="d-flex flex-column justify-content-start align-items-start mb-3 bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label">
-          <label>
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="askQuestion"
-            onchange="disableMetadataSelections('form-check-input')" checked>
-            <span class="radio"></span>
-            <span class="form-check-label" for="askQuestion">
-              Ask question?
-            </span>
-          </label>
-          <label>
-            <input class="form-check-input"type="radio" name="flexRadioDefault" id="selectMetadata"
-            onchange="disableQuestionBox()">
-            <span class="radio"></span>
-            <span class="form-check-label" for="selectMetadata">
-              Select filter
-            </span>
-          </label>
-        </div>
-
-        <form action="#chart-advisor" class="w-50" id="formAdvisor">
-          <div class="mb-3">
-            <label for="inputSearch" class="form-label">Search information</label>
-            <input type="text" class="form-control" id="inputSearch" name="inputSearch" aria-describedby="searchHelp" placeholder="Search Indicator here">
-            <div id="searchHelp" class="form-text">Search indicator with Insight Advisor Qlik.</div>
-          </div>
-          <div class="form-group" id="form-group-selected">
-            <select class="form-select mb-3" id="selectMeasure">
-              <optgroup label="Fields" id="fieldMeasures">
-                <option>Select Measure</option>
-              </optgroup>
-              <optgroup label="Master Items" id="masterMeasures">
-              </optgroup>
-            </select>
-          </div>
-          <div class="form-group">
-            <select class="form-select mb-3" id="selectDimension">
-              <optgroup label="Fields" id="fieldDimensions">
-                <option>Select Dimension</option>
-              </optgroup>
-              <optgroup label="Master Items" id="masterDimensions">
-              </optgroup>
-            </select>
-          </div>
-          <div class="form-group">
-            <select class="form-select mb-3" id="selectAnalysis">
-              <option value="rank-rank">Select Analysis</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary text-center" id="submit-btn">Search now</button>
-        </form>
       </div>
-
-
-      <div id="selection" class="toolbar mb-3"></div>
-      <div id="chart-advisor" class="vh-100"></div>
-
     </div>
   </div>
 
@@ -196,8 +149,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<script type="module" src="js/form.js"></script>
-<script src="js/effects.js"></script>
 
 </body>
+
 </html>

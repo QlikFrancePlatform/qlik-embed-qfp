@@ -17,6 +17,7 @@ PROJECT_NAME="Qlik Embed"
 TENANT_URL="https://<tenant>.eu.qlikcloud.com"
 APP_ID="<app_id>"
 WEB_INTEGRATION_ID="<web_integration_id>"
+ASSISTANT_ID="<assistant_id>"
 ```
 
 Change in index.html file
@@ -28,7 +29,14 @@ Change in index.html file
       data-host="https://<tenant>.eu.qlikcloud.com"
       data-web-integration-id="<web_integration_id>"
       data-cross-site-cookies="true"
+      data-auto-redirect="true"      
     ></script>
+```
+
+#### Qlik Anwsers integration
+
+```html
+  <qlik-embed ui="ai/assistant" assistant-id="{{ ASSISTANT_ID }}" appearance="qlik-light"></qlik-embed>
 ```
 
 #### Managing web integrations
