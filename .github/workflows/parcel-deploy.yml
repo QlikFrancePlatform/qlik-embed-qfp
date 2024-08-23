@@ -32,6 +32,7 @@ jobs:
         echo TENANT_URL="${{ secrets.TENANT_URL }}"  >> .env
         echo APP_ID="${{ secrets.APP_ID }}"  >> .env
         echo WEB_INTEGRATION_ID="${{ secrets.WEB_INTEGRATION_ID }}"  >> .env
+        echo ASSISTANT_ID="${{ secrets.ASSISTANT_ID }}"  >> .env
         cat .env
 
     # install dependencies if the cache did not hit
