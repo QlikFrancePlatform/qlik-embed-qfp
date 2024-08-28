@@ -78,14 +78,14 @@
     "@nebula.js/sn-pivot-table": "^3.9.1",
     "@nebula.js/sn-sankey-chart": "1.10.13",
     "@nebula.js/sn-scatter-plot": "^3.56.0",
+    "@nebula.js/sn-shape": "^1.1.5",
     "@nebula.js/sn-table": "3.9.2",
     "@nebula.js/sn-treemap": "^1.6.6",
     "@nebula.js/sn-waterfall": "^0.36.8",
     "@nebula.js/sn-word-cloud": "^1.0.6",
-    "@nebula.js/sn-shape": "^1.1.5",
     "@nebula.js/stardust": "5.4.2",
-    "@qlik/sdk": "^0.28.0",
     "@qlik/api": "1.16.0",
+    "@qlik/sdk": "^0.28.0",
     "dotenv": "^16.4.5",
     "enigma.js": "^2.14.0"
   }
