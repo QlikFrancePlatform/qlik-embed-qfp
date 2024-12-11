@@ -10,12 +10,14 @@ dotenv.config({ path: '../../.env' });
 
 const tenantUrl = process.env.TENANT_URL;
 const appId = process.env.APP_ID;
-const webIntegrationId = process.env.WEB_INTEGRATION_ID;
+const authClientId = process.env.OAUTH_CLIENT_ID;
+const embedAccessCode = process.env.EMBED_ACCESS_CODE;
 
 const config = {
-  authType: AuthType.WebIntegration,
+  authType: AuthType.OAuth2,
   host: tenantUrl,
-  webIntegrationId: webIntegrationId,
+  clientId: authClientId,
+  embedAccessCode: embedAccessCode,
   autoRedirect: true
 };
 

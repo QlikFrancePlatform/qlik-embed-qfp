@@ -1,0 +1,20 @@
+{
+  "plugins": {
+    "posthtml-modules": {
+      "root": "src",
+      "input": "*.html",
+      "output": "dist"
+    },
+    "posthtml-expressions": {
+      "locals": {
+        "PROJECT_NAME": "Qlik Embed",
+        "TENANT_URL": "https://qfpanon.se.qlikcloud.com",
+        "APP_ID": "abe9f065-4fe7-437a-ac36-36ebfc0401e6",
+        "WEB_INTEGRATION_ID": "<web_integration_id>",
+        "OAUTH_CLIENT_ID": "87ea1af44b38efd9dfb460544b5156c1",
+        "EMBED_ACCESS_CODE": "a54e8068-aad3-4374-a201-bb988f869644._WXw2db6ZUWajzhEkhjk2KVrkd4swyEjt2UvOpX8nGs",
+        "ASSISTANT_ID": "<assistant_id>"
+      }
+    }
+  }
+}

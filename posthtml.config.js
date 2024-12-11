@@ -1,44 +1,22 @@
 require('dotenv').config({ path: '.env' });
+const fs = require('fs');
 
-const projectName = process.env.PROJECT_NAME;
-const tenantUrl = process.env.TENANT_URL;
-const appId = process.env.APP_ID;
-const webIntegrationId = process.env.WEB_INTEGRATION_ID;
-const oauthClientId = process.env.OAUTH_CLIENT_ID;
-const assistantId = process.env.ASSISTANT_ID;
-const redirectUri = process.env.REDIRECT_URI;
-
-module.exports = {
-  plugins: {
-    "posthtml-modules": {
-      "root": "src",
-      "input": "*.html",
-      "output": "dist"
-    },
-    "posthtml-expressions": {
-      locals: {
-        "PROJECT_NAME": () => {
-          return projectName;
-        },
-        "TENANT_URL": () => {
-          return tenantUrl;
-        },
-        "APP_ID": () => {
-          return appId;
-        },
-        "WEB_INTEGRATION_ID": () => {
-          return webIntegrationId;
-        },
-        "OAUTH_CLIENT_ID": () => {
-          return oauthClientId;
-        },
-        "ASSISTANT_ID": () => {
-          return assistantId;
-        },
-        "REDIRECT_URI": () => {
-          return redirectUri;
-        }
-      }
-    }
-  }
+const locals = {
+  "PROJECT_NAME": process.env.PROJECT_NAME,
+  "TENANT_URL": process.env.TENANT_URL,
+  "APP_ID": process.env.APP_ID,
+  "WEB_INTEGRATION_ID": process.env.WEB_INTEGRATION_ID,
+  "OAUTH_CLIENT_ID": process.env.OAUTH_CLIENT_ID,
+  "EMBED_ACCESS_CODE": process.env.EMBED_ACCESS_CODE,
+  "ASSISTANT_ID": process.env.ASSISTANT_ID,
 };
+
+// Read the existing .posthtmlrc file
+const posthtmlrcPath = '.posthtmlrc';
+const posthtmlrc = JSON.parse(fs.readFileSync(posthtmlrcPath, 'utf8'));
+
+// Update the locals in the .posthtmlrc file
+posthtmlrc.plugins['posthtml-expressions'].locals = locals;
+
+// Write the updated .posthtmlrc file back to disk
+fs.writeFileSync(posthtmlrcPath, JSON.stringify(posthtmlrc, null, 2));

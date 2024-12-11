@@ -13,9 +13,9 @@
       type="application/javascript"
       src="https://cdn.jsdelivr.net/npm/@qlik/embed-web-components"
       data-host="{{ TENANT_URL }}"
-      data-web-integration-id="{{ WEB_INTEGRATION_ID }}"
-      data-cross-site-cookies="true"
-      data-auto-redirect="true"
+      data-client-id="{{ OAUTH_CLIENT_ID }}"
+      data-access-code="{{ EMBED_ACCESS_CODE }}"
+      data-auth-type="anonymous"
     ></script>
     
     <link rel="stylesheet" type="text/css" href="./scss/custom.scss">
@@ -112,9 +112,6 @@
         <p class="lead text-body-secondary">List all chart of Qlik Sense and check a good behavior with <a href="https://qlik.dev/embed/qlik-embed/why-qlik-embed/">qlik-embed</a> html tag.</p>
         <p>
           <a href="index.html" class="btn btn-primary my-2">Home Page</a>
-          <a href="nebula.html" class="btn btn-primary my-2">Embed with Nebula.js</a>
-          <a href="answers.html" class="btn btn-secondary my-2">Qlik Answers</a>
-          <a href="advisor.html" class="btn btn-secondary my-2">Qlik Insight Advisor</a>
         </p>
       </div>
     </div>

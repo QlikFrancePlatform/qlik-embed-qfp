@@ -33,6 +33,30 @@ Change in index.html file
     ></script>
 ```
 
+#### Anonymous Access
+
+Please read [create an anonymous OAuth2 client](https://qlik.dev/authenticate/oauth/create/create-oauth-client-anonymous/) webpage on [qlik.dev](https://qlik.dev).
+
+Add .env file with parameter
+
+```.env
+OAUTH_CLIENT_ID="<auth_client_id>"
+EMBED_ACCESS_CODE="<embed_access_code>"
+```
+
+Change in index.html file
+
+```js
+    <script
+      crossorigin="anonymous"
+      src="https://cdn.jsdelivr.net/npm/@qlik/embed-web-components"
+      data-host="https://<tenant>.eu.qlikcloud.com"
+      data-client-id="<auth_client_id>"
+      data-access-code="<embed_access_code>"
+      data-auth-type="anonymous"    
+    ></script>
+```
+
 #### Qlik Anwsers integration
 
 ```html

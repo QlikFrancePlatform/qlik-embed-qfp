@@ -4,12 +4,14 @@ dotenv.config({ path: '../../.env' });
 
 const tenantUrl = process.env.TENANT_URL;
 const appId = process.env.APP_ID;
-const webIntegrationId = process.env.WEB_INTEGRATION_ID;
+const authClientId = process.env.OAUTH_CLIENT_ID;
+const embedAccessCode = process.env.EMBED_ACCESS_CODE;
 
 const headers = {
   'accept-language': 'en',
   'Content-Type': 'application/json',
-  'qlik-web-integration-id': webIntegrationId
+  'client-id': authClientId,
+  'embed-access-code': embedAccessCode,
 }; // headers to pass in requests
 
 import charts from './charts';

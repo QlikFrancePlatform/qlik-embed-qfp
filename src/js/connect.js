@@ -1,6 +1,7 @@
 require('dotenv').config({ path: '../../.env' });
 const tenantUrl = process.env.TENANT_URL;
-const webIntegrationId = process.env.WEB_INTEGRATION_ID;
+const authClientId = process.env.OAUTH_CLIENT_ID;
+const embedAccessCode = process.env.EMBED_ACCESS_CODE;
 
 export default class ConnectService {
 
@@ -13,13 +14,14 @@ export default class ConnectService {
       mode: 'cors',
       credentials: 'include',
       headers: {
-        'qlik-web-integration-id': webIntegrationId,
+        'client-id': authClientId,
+        'embed-access-code': embedAccessCode,
       },
     });
     if (loggedIn.status !== 200) {
       if (sessionStorage.getItem('tryQlikAuth') === null) {
         sessionStorage.setItem('tryQlikAuth', 1);
-        window.location = `${tenantUrl}/login?qlik-web-integration-id=${webIntegrationId}&returnto=${location.href}`;
+        window.location = `${tenantUrl}/login?client-id=${authClientId}&embed-access-code=${embedAccessCode}&returnto=${location.href}`;
         return await new Promise((resolve) => setTimeout(resolve, 10000)); // prevents further code execution
       } else {
         sessionStorage.removeItem('tryQlikAuth');
